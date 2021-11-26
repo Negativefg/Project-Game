@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://playertxtr.png" type="Texture" id=2]
+[ext_resource path="res://Scorpio.png" type="Texture" id=3]
+[ext_resource path="res://CameraScript.gd" type="Script" id=4]
+[ext_resource path="res://Glock.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 12.5, 2.5 )
+scale = Vector2( 1, 0.25 )
+enabled = true
+cast_to = Vector2( 100, 0 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 33, 0 )
+offset = Vector2( 3, 0 )
+current = true
+zoom = Vector2( 0.25, 0.25 )
+smoothing_enabled = true
+smoothing_speed = 3.0
+script = ExtResource( 4 )
+
+[node name="Scorpio" type="Sprite" parent="."]
+visible = false
+position = Vector2( 7, 4 )
+scale = Vector2( 0.5, 0.5 )
+z_index = -1
+texture = ExtResource( 3 )
+
+[node name="Glock" type="Sprite" parent="."]
+position = Vector2( 6.8, 4.3 )
+scale = Vector2( 0.6, 0.6 )
+z_index = -1
+texture = ExtResource( 5 )
